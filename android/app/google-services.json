@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "602339153498",
+    "project_id": "voyager01-bde8e",
+    "storage_bucket": "voyager01-bde8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602339153498:android:92ba9dcda762c119446a63",
+        "android_client_info": {
+          "package_name": "com.example.voyager_v01"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "602339153498-uuekru5v4tovcjkm4dfip1gh3i6ufifl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQi6Umyb0yHx_Lo6LTWJzBSTGzb3swymg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "602339153498-uuekru5v4tovcjkm4dfip1gh3i6ufifl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
