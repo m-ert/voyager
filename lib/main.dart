@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 // git test 2323
+// git test 123
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
