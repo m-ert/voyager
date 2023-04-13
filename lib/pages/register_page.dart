@@ -28,7 +28,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       child:SafeArea(child: Center(child:Column(children: [
 
       SizedBox(height: 50),
-      Image.asset('assets/voyager.png', height:250),
+      Image.asset('assets/voyager.png', height:249),
       SizedBox(height: 30),
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
