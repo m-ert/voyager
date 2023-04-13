@@ -43,177 +43,192 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.orange,
-      body:SingleChildScrollView(
-      child:SafeArea(child: Center(child:Column(children: [
-
-      SizedBox(height: 50),
-      Image.asset('assets/voyager.png', height:250),
-      SizedBox(height: 30),
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 35),
-          child: Text('E-Mail',
-          style: TextStyle(
-            color: Colors.white),),),
-          
-          SizedBox(height: 10,),
-          
-          Padding(
-          padding: EdgeInsets.symmetric(horizontal: 25,),
-          child: Container(height: 65,
-          decoration: BoxDecoration(color: Colors.white,
-          border: Border.all(color:Colors.black),
-          borderRadius: BorderRadius.circular(18),
-          ),
-          child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 20),
-                          child: TextField(
-                            controller: _controllerEmail,
-                            decoration: InputDecoration(
-                                border: InputBorder.none, hintText: 'E-Mail'),
-                          ),
-                        ),
-          
-          ),
-          )
-        ],
-      ),
-      SizedBox(height: 30,),
-      Column(children: [
-          Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 35),
-                          child: Text(
-                            'Password',
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 140,
-                        ),
-                        Text(
-                          'Forgot Password',
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      ],
+      body: SingleChildScrollView(
+        child: SafeArea(
+            child: Center(
+          child: Column(
+            children: [
+              const SizedBox(height: 50),
+              Image.asset('assets/voyager.png', height: 250),
+              const SizedBox(height: 30),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 35),
+                    child: Text(
+                      'E-Mail',
+                      style: TextStyle(color: Colors.white),
                     ),
-                    SizedBox(height: 10,),
-
-                    Padding(
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 25,
+                    ),
+                    child: Container(
+                      height: 65,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 20),
+                        child: TextField(
+                          controller: _controllerEmail,
+                          decoration: const InputDecoration(
+                              border: InputBorder.none, hintText: 'E-Mail'),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Column(
+                children: [
+                  Row(
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 35),
+                        child: Text(
+                          'Password',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 140,
+                      ),
+                      Text(
+                        'Forgot Password',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
                     padding: EdgeInsets.symmetric(horizontal: 25),
-                    child: Container(height: 65,
+                    child: Container(
+                      height: 65,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                        child: TextField(
+                          controller: _controllerPassword,
+                          //obscureText: true,
+                          decoration: const InputDecoration(
+                              border: InputBorder.none, hintText: 'Password'),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 80,
+              ),
+              GestureDetector(
+                onTap: () {
+                  // TODO:
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                    vertical: 10,
+                  ),
+                  child: Container(
+                    height: 50,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(color: Colors.black),
-                      borderRadius: BorderRadius.circular(18),
+                      borderRadius: BorderRadius.circular(58),
                     ),
-                    child: Padding(padding: EdgeInsets.symmetric(
-                      horizontal: 20, vertical: 20),
-                      child: TextField(
-                        controller: _controllerPassword,
-                            obscureText: true,
-                            decoration: InputDecoration(
-                                border: InputBorder.none, hintText: 'Password'),
-
+                    child: const Center(
+                      child: Text(
+                        'Login',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.orange,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text(
+                    'Do not have an account?',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
                     ),
+                  ),
+                ],
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RegisterScreen()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                    vertical: 10,
+                  ),
+                  child: Container(
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.black),
+                      borderRadius: BorderRadius.circular(58),
                     ),
-                    ],
-                    
-                    
-                    
-                    ),
-                    SizedBox(height: 80,),
-                    GestureDetector(
-                      onTap: (){
-
-                      },
-                      child: Padding(
-                        padding:EdgeInsets.symmetric(
-                          horizontal: 15,
-                          vertical: 10,
-                        ), 
-                        
-                        child: Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border:Border.all(color:Colors.black),
-                            borderRadius: BorderRadius.circular(58),
-                          ),
-                          child: Center(
-                            child: Text('Login',
-                            style:TextStyle(fontSize: 20,
-                            color: Colors.orange,
-                            fontWeight: FontWeight.bold,),),),
+                    child: const Center(
+                      child: Text(
+                        'Sign up',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.orange,
+                          fontWeight: FontWeight.bold,
                         ),
-                        ),
-                    ),
-                   SizedBox(height: 10,),
-        Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Do not have an account?',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
                       ),
-                    ),],),
-                    GestureDetector(
-                      onTap: (){ Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => RegisterScreen()));
-
-                      },
-                      child: Padding(
-                        padding:EdgeInsets.symmetric(
-                          horizontal: 15,
-                          vertical: 10,
-                        ), 
-                        
-                        child: Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border:Border.all(color:Colors.black),
-                            borderRadius: BorderRadius.circular(58),
-                          ),
-                          child: Center(
-                            child: Text('Sign up',
-                            style:TextStyle(fontSize: 20,
-                            color: Colors.orange,
-                            fontWeight: FontWeight.bold,),),),
-                        ),
-                        ),
                     ),
-
-      ],),
-      
-      )
-      
-      ) ,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        )),
       ),
-      );
-      
-      
-    
+    );
   }
 
-
-Widget _title() {
+  Widget _title() {
     return const Text('Voyager Auth');
   }
 
@@ -251,5 +266,4 @@ Widget _title() {
       child: Text(isLogin ? 'Register instead' : 'Login instead'),
     );
   }
-
 }
