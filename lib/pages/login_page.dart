@@ -11,7 +11,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String? errorMessage = '';
+  String? errorMessage = 'asdfasfds';
   bool isLogin = true;
 
   final TextEditingController _controllerEmail = TextEditingController();
@@ -82,11 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 20),
-                        child: TextField(
-                          controller: _controllerEmail,
-                          decoration: const InputDecoration(
-                              border: InputBorder.none, hintText: 'E-Mail'),
-                        ),
+                        child: _entryField('E-mail', _controllerEmail),
                       ),
                     ),
                   )
@@ -132,49 +128,17 @@ class _LoginPageState extends State<LoginPage> {
                       child: Padding(
                         padding:
                             EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                        child: TextField(
-                          controller: _controllerPassword,
-                          //obscureText: true,
-                          decoration: const InputDecoration(
-                              border: InputBorder.none, hintText: 'Password'),
-                        ),
+                        child: _entryField('Password', _controllerPassword),
                       ),
                     ),
                   ),
+                  _errorMessage()
                 ],
               ),
               const SizedBox(
-                height: 80,
+                height: 25,
               ),
-              GestureDetector(
-                onTap: () {
-                  // TODO:
-                },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 15,
-                    vertical: 10,
-                  ),
-                  child: Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.black),
-                      borderRadius: BorderRadius.circular(58),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.orange,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              _submitButton(),
               const SizedBox(
                 height: 10,
               ),
@@ -189,47 +153,12 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => RegisterScreen()));
-                },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 15,
-                    vertical: 10,
-                  ),
-                  child: Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.black),
-                      borderRadius: BorderRadius.circular(58),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Sign up',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.orange,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              _loginOrRegisterButton(),
             ],
           ),
         )),
       ),
     );
-  }
-
-  Widget _title() {
-    return const Text('Voyager Auth');
   }
 
   Widget _entryField(
@@ -239,6 +168,7 @@ class _LoginPageState extends State<LoginPage> {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
+        border: InputBorder.none,
         labelText: title,
       ),
     );
