@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:voyager_v01/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:voyager_v01/pages/map_page.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -42,6 +43,14 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             _userUID(),
             _signOutButton(),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MapSample()),
+                  );
+                },
+                child: const Text('go to Map Page'))
           ],
         ),
       ),

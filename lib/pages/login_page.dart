@@ -11,7 +11,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String? errorMessage = 'asdfasfds';
+  String? errorMessage = '';
   bool isLogin = true;
 
   final TextEditingController _controllerEmail = TextEditingController();
