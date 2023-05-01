@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:voyager_v01/location_service.dart';
 
 class MapSample extends StatefulWidget {
   const MapSample({Key? key}) : super(key: key);
@@ -35,14 +36,19 @@ class MapSampleState extends State<MapSample> {
                 child: TextFormField(
                   controller: _searchController,
                   textCapitalization: TextCapitalization.words,
-                  decoration: const InputDecoration(hintText: 'Search'),
+                  decoration:
+                      const InputDecoration(hintText: 'Search (by City)'),
                   onChanged: (value) {
                     print(value);
                   },
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () async {
+                  var place =
+                      await LocationService().getPlace(_searchController.text);
+                  _goToPlace(place);
+                },
                 icon: const Icon(Icons.search),
               )
             ],
@@ -59,6 +65,15 @@ class MapSampleState extends State<MapSample> {
         ],
       ),
     );
+  }
+
+  Future<void> _goToPlace(Map<String, dynamic> place) async {
+    final double lat = place['geometry']['location']['lat'];
+    final double lng = place['geometry']['location']['lng'];
+
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(target: LatLng(lat, lng), zoom: 15)));
   }
 
   /*

@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const MapSample()),
+                    MaterialPageRoute(builder: (context) => MapSample()),
                   );
                 },
                 child: const Text('go to Map Page'))
