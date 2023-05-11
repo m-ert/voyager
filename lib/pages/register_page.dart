@@ -4,6 +4,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:voyager_v01/pages/home_page.dart';
 import 'package:voyager_v01/pages/login_page.dart';
 
+import '../auth.dart';
+
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
@@ -13,17 +15,30 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   String? errorMessage = '';
-  bool isLogin = true;
+  //bool isLogin = true;
   final TextEditingController _controllerUserName = TextEditingController();
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
   final TextEditingController _controllerPasswordAgain =
       TextEditingController();
 
+  Future<void> createUserWithEmailAndPassword() async {
+    try {
+      await Auth().createUserWithEmailAndPassword(
+        email: _controllerEmail.text,
+        password: _controllerPassword.text,
+      );
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        errorMessage = e.message;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: SafeArea(
             child: Center(
@@ -39,7 +54,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: EdgeInsets.symmetric(horizontal: 35),
                     child: Text(
                       'E-Mail',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.black),
                     ),
                   ),
                   SizedBox(
@@ -52,7 +67,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Container(
                       height: 65,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Color(0xffF1F1F1),
                         border: Border.all(color: Colors.black),
                         borderRadius: BorderRadius.circular(18),
                       ),
@@ -81,7 +96,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: Text(
                           'Password',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                       ),
@@ -95,7 +110,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Container(
                       height: 65,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Color(0xffF1F1F1),
                         border: Border.all(color: Colors.black),
                         borderRadius: BorderRadius.circular(18),
                       ),
@@ -125,7 +140,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: Text(
                           'Password Again',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                       ),
@@ -139,7 +154,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Container(
                       height: 65,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Color(0xffF1F1F1),
                         border: Border.all(color: Colors.black),
                         borderRadius: BorderRadius.circular(18),
                       ),
@@ -159,7 +174,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ],
               ),
               SizedBox(
-                height: 80,
+                height: 40,
               ),
               GestureDetector(
                 onTap: () {
@@ -168,22 +183,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 },
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: 15,
-                    vertical: 10,
+                    horizontal: 30,
+                    vertical: 0,
                   ),
                   child: Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.black),
-                      borderRadius: BorderRadius.circular(58),
+                      color: Color(0xffFF6000),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                     child: Center(
                       child: Text(
                         'Sign Up',
                         style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.orange,
+                          fontSize: 16,
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -191,12 +205,31 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
+
+              _loginOrRegisterButton(),
+              //remember that
             ],
           ),
         )),
+      ),
+    );
+  }
+
+  Widget _loginOrRegisterButton() {
+    return TextButton(
+      onPressed: () {
+        Navigator.pop(context);
+        // setState(() {
+        //   isLogin = !isLogin;
+        // });
+      },
+      style: TextButton.styleFrom(primary: Color(0xffFF6000)),
+      child: Text(
+        // isLogin
+        //     ? 'Do not have an account? Register instead'
+        //     : ' Do you have an account? Login instead',
+        'Already have an account? Log in instead',
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
       ),
     );
   }

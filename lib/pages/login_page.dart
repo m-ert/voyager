@@ -12,23 +12,10 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   String? errorMessage = '';
-  bool isLogin = true;
+  // bool isLogin = true;
 
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
-
-  Future<void> createUserWithEmailAndPassword() async {
-    try {
-      await Auth().createUserWithEmailAndPassword(
-        email: _controllerEmail.text,
-        password: _controllerPassword.text,
-      );
-    } on FirebaseAuthException catch (e) {
-      setState(() {
-        errorMessage = e.message;
-      });
-    }
-  }
 
   Future<void> signInWithEmailAndPassword() async {
     try {
@@ -46,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
+      backgroundColor: Color(0xffFFFFFF),
       body: SingleChildScrollView(
         child: SafeArea(
             child: Center(
@@ -62,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                     padding: EdgeInsets.symmetric(horizontal: 35),
                     child: Text(
                       'E-Mail',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                     ),
                   ),
                   const SizedBox(
@@ -75,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Container(
                       height: 65,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Color(0xffF1F1F1),
                         border: Border.all(color: Colors.black),
                         borderRadius: BorderRadius.circular(18),
                       ),
@@ -100,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Text(
                           'Password',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                       ),
@@ -109,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       Text(
                         'Forgot Password',
-                        style: TextStyle(color: Colors.grey),
+                        style: TextStyle(color: Colors.black54),
                       ),
                     ],
                   ),
@@ -121,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Container(
                       height: 65,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Color(0xffF1F1F1),
                         border: Border.all(color: Colors.black),
                         borderRadius: BorderRadius.circular(18),
                       ),
@@ -141,17 +128,6 @@ class _LoginPageState extends State<LoginPage> {
               _submitButton(),
               const SizedBox(
                 height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    'Do not have an account?',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
               ),
               _loginOrRegisterButton(),
             ],
@@ -179,21 +155,34 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _submitButton() {
-    return ElevatedButton(
-      onPressed:
-          isLogin ? signInWithEmailAndPassword : createUserWithEmailAndPassword,
-      child: Text(isLogin ? 'Login' : 'Register'),
+    return SizedBox(
+      height: 50,
+      width: 350,
+      child: ElevatedButton(
+        onPressed: signInWithEmailAndPassword,
+        style: ElevatedButton.styleFrom(
+            primary: Color(0xffFF6000),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15))),
+        child: Text(
+          'Log in',
+          style: TextStyle(fontSize: 16),
+        ),
+      ),
     );
   }
 
   Widget _loginOrRegisterButton() {
     return TextButton(
       onPressed: () {
-        setState(() {
-          isLogin = !isLogin;
-        });
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const RegisterScreen()));
       },
-      child: Text(isLogin ? 'Register instead' : 'Login instead'),
+      style: TextButton.styleFrom(primary: Color(0xffFF6000)),
+      child: Text(
+        'Do not have an account? Register now!',
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+      ),
     );
   }
 }
