@@ -29,4 +29,18 @@ class LocationService {
     print(results);
     return results;
   }
+
+  Future<Map<String, dynamic>> getNearbyPlaces(String input) async {
+    final placeId = await getPlaceId(input);
+
+    final String url =
+        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=$input&location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&key=$key';
+
+    var response = await http.get(Uri.parse(url));
+    var json = convert.jsonDecode(response.body);
+    var results = json['result'] as Map<String, dynamic>;
+
+    print(results);
+    return results;
+  }
 }

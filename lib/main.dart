@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:voyager_v01/pages/map_page.dart';
+import 'package:voyager_v01/pages/nearby_places.dart';
 import 'package:voyager_v01/widget_tree.dart';
 
 Future<void> main() async {
@@ -88,22 +89,35 @@ class PageContent extends StatelessWidget {
           ),
         ),
         Center(
-          child: TextButton(
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-            ),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const WidgetTree()),
-              );
-            },
-            child: Text(
-              'Profile',
-              style: TextStyle(
-                  color: Color(0xffFF6000),
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
-            ),
+          child: Row(
+            children: [
+              TextButton(
+                style: ButtonStyle(
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const WidgetTree()),
+                  );
+                },
+                child: Text(
+                  'Profile',
+                  style: TextStyle(
+                      color: Color(0xffFF6000),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => const NearByPlacesScreen()),
+                    );
+                  },
+                  child: Text('Nearby Places'))
+            ],
           ),
         ),
         Padding(

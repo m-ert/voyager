@@ -36,8 +36,7 @@ class MapSampleState extends State<MapSample> {
                 child: TextFormField(
                   controller: _searchController,
                   textCapitalization: TextCapitalization.words,
-                  decoration:
-                      const InputDecoration(hintText: 'Search (by City)'),
+                  decoration: const InputDecoration(hintText: 'Search'),
                   onChanged: (value) {
                     print(value);
                   },
