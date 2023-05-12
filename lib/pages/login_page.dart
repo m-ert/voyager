@@ -40,17 +40,18 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             children: [
               const SizedBox(height: 50),
-              Image.asset('assets/voyager.png', height: 250),
+              Image.asset(
+                'assets/voyager.png',
+                height: 250,
+                width: 250,
+              ),
               const SizedBox(height: 30),
+              //E-Mail Column
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 35),
-                    child: Text(
-                      'E-Mail',
-                      style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-                    ),
                   ),
                   const SizedBox(
                     height: 10,
@@ -76,32 +77,20 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
               const SizedBox(
-                height: 30,
+                height: 12,
               ),
+              //Password Column
               Column(
                 children: [
                   Row(
                     children: const [
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 35),
-                        child: Text(
-                          'Password',
-                          style: TextStyle(
-                            color: Colors.black,
-                          ),
-                        ),
                       ),
                       SizedBox(
                         width: 140,
                       ),
-                      Text(
-                        'Forgot Password',
-                        style: TextStyle(color: Colors.black54),
-                      ),
                     ],
-                  ),
-                  const SizedBox(
-                    height: 10,
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 25),
@@ -123,11 +112,11 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
               const SizedBox(
-                height: 25,
+                height: 12,
               ),
               _submitButton(),
               const SizedBox(
-                height: 10,
+                height: 12,
               ),
               _loginOrRegisterButton(),
             ],
@@ -166,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
                 borderRadius: BorderRadius.circular(15))),
         child: Text(
           'Log in',
-          style: TextStyle(fontSize: 16),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
       ),
     );

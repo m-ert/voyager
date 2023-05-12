@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:voyager_v01/pages/map_page.dart';
 import 'package:voyager_v01/widget_tree.dart';
 
 Future<void> main() async {
@@ -22,12 +23,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // Define the categories
     List<Category> categories = [
-      Category(name: 'Breakfast', icon: Icons.free_breakfast),
-      Category(name: 'Lunch', icon: Icons.lunch_dining),
-      Category(name: 'Dinner', icon: Icons.dinner_dining),
-      Category(name: 'Tea & Coffee', icon: Icons.coffee),
-      Category(name: 'Pub', icon: Icons.local_drink),
-      Category(name: 'Events', icon: Icons.movie),
+      Category(name: 'Breakfast', icon: Icons.egg_alt_outlined),
+      Category(name: 'Lunch', icon: Icons.fastfood_outlined),
+      Category(name: 'Dinner', icon: Icons.local_restaurant_outlined),
+      Category(name: 'Tea & Coffee', icon: Icons.coffee_outlined),
+      Category(name: 'Pub', icon: Icons.nightlife_outlined),
+      Category(name: 'Events', icon: Icons.movie_filter_outlined),
     ];
 
     return MaterialApp(
@@ -96,7 +97,13 @@ class PageContent extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const WidgetTree()),
               );
             },
-            child: Text('Old Page'),
+            child: Text(
+              'Profile',
+              style: TextStyle(
+                  color: Color(0xffFF6000),
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
         ),
         Padding(
@@ -111,7 +118,7 @@ class PageContent extends StatelessWidget {
               filled: true,
               border: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Colors.black,
+                  color: Color(0xffFF6000),
                 ),
                 borderRadius: BorderRadius.circular(15),
               ),
@@ -130,7 +137,12 @@ class PageContent extends StatelessWidget {
                 categories.length,
                 (index) {
                   return InkWell(
-                    onTap: () => debugPrint("deneme"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MapSample()),
+                      );
+                    },
                     child: Center(
                       child: CategoryBox(
                         name: categories[index].name,

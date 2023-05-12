@@ -46,19 +46,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
             children: [
               SizedBox(height: 50),
               Image.asset('assets/voyager.png', height: 249),
-              SizedBox(height: 30),
+              SizedBox(height: 20),
+              //E-Mail Column
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 35),
-                    child: Text(
-                      'E-Mail',
-                      style: TextStyle(color: Colors.black),
-                    ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 24,
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
@@ -69,7 +66,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       decoration: BoxDecoration(
                         color: Color(0xffF1F1F1),
                         border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.circular(18),
+                        borderRadius: BorderRadius.circular(15),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -84,26 +81,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   )
                 ],
               ),
-              SizedBox(
-                height: 30,
-              ),
+              //Password Column
               Column(
                 children: [
                   Row(
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 35),
-                        child: Text(
-                          'Password',
-                          style: TextStyle(
-                            color: Colors.black,
-                          ),
-                        ),
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 12,
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 25),
@@ -112,7 +101,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       decoration: BoxDecoration(
                         color: Color(0xffF1F1F1),
                         border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.circular(18),
+                        borderRadius: BorderRadius.circular(15),
                       ),
                       child: Padding(
                         padding:
@@ -128,26 +117,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 30,
-              ),
+              //Password Again Column
               Column(
                 children: [
                   Row(
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 35),
-                        child: Text(
-                          'Password Again',
-                          style: TextStyle(
-                            color: Colors.black,
-                          ),
-                        ),
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 12,
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 25),
@@ -156,7 +137,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       decoration: BoxDecoration(
                         color: Color(0xffF1F1F1),
                         border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.circular(18),
+                        borderRadius: BorderRadius.circular(15),
                       ),
                       child: Padding(
                         padding:
@@ -174,7 +155,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ],
               ),
               SizedBox(
-                height: 40,
+                height: 24,
               ),
               GestureDetector(
                 onTap: () {
@@ -196,7 +177,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: Text(
                         'Sign Up',
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 18,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
@@ -204,6 +185,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 12,
               ),
 
               _loginOrRegisterButton(),
