@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
       'Profile',
       style: TextStyle(
         fontSize: 24,
-        color: Colors.black,
+        color: Colors.white,
       ),
     );
   }
@@ -46,9 +46,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xffFF6000),
         leading: BackButton(
-          color: Colors.black,
+          color: Colors.white,
           onPressed: () {
             Navigator.push(
               context,

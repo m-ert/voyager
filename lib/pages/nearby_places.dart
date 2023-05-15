@@ -25,37 +25,78 @@ class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Nearby Places'),
+        title: const Text(
+          'Nearby Places',
+          style: TextStyle(fontSize: 22),
+        ),
         centerTitle: true,
+        backgroundColor: Color(0xffFF6000),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ElevatedButton(
-                onPressed: () {
-                  getNearbyPlacesByType('school');
-                },
-                child: const Text("Get Nearby Schools")),
+            Center(
+              child: ElevatedButton(
+                  onPressed: () {
+                    getNearbyPlacesByType('school');
+                  },
+                  style: ElevatedButton.styleFrom(
+                      primary: Color(0xffFF6000),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15))),
+                  child: const Text(
+                    "Get Nearby Schools",
+                    style: TextStyle(fontSize: 16),
+                  )),
+            ),
             ElevatedButton(
                 onPressed: () {
                   getNearbyPlacesByKeyword('hukuk');
                 },
-                child: const Text("Get Nearby Law Offices")),
+                style: ElevatedButton.styleFrom(
+                    primary: Color(0xffFF6000),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15))),
+                child: const Text(
+                  "Get Nearby Law Offices",
+                  style: TextStyle(fontSize: 16),
+                )),
             ElevatedButton(
                 onPressed: () {
                   getNearbyPlacesByKeyword('restaurant');
                 },
-                child: const Text("Get Nearby Restaurants")),
+                style: ElevatedButton.styleFrom(
+                    primary: Color(0xffFF6000),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15))),
+                child: const Text(
+                  "Get Nearby Restaurants",
+                  style: TextStyle(fontSize: 16),
+                )),
             ElevatedButton(
                 onPressed: () {
                   getNearbyPlacesByKeyword('coffee');
                 },
-                child: const Text("Get Nearby Cafés")),
+                style: ElevatedButton.styleFrom(
+                    primary: Color(0xffFF6000),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15))),
+                child: const Text(
+                  "Get Nearby Cafés",
+                  style: TextStyle(fontSize: 16),
+                )),
             ElevatedButton(
                 onPressed: () {
                   getNearbyPlacesByKeyword('shopping');
                 },
-                child: const Text("Get Nearby Shops")),
+                style: ElevatedButton.styleFrom(
+                    primary: Color(0xffFF6000),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15))),
+                child: const Text(
+                  "Get Nearby Shops",
+                  style: TextStyle(fontSize: 16),
+                )),
             if (nearbyPlacesResponse.results != null)
               for (int i = 0; i < nearbyPlacesResponse.results!.length; i++)
                 nearbyPlacesWidget(nearbyPlacesResponse.results![i])

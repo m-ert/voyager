@@ -89,35 +89,44 @@ class PageContent extends StatelessWidget {
           ),
         ),
         Center(
-          child: Row(
-            children: [
-              TextButton(
-                style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const WidgetTree()),
-                  );
-                },
-                child: Text(
-                  'Profile',
-                  style: TextStyle(
-                      color: Color(0xffFF6000),
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              TextButton(
+          child: Center(
+            child: Row(
+              children: [
+                TextButton(
+                  style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue),
+                  ),
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                          builder: (context) => const NearByPlacesScreen()),
+                          builder: (context) => const WidgetTree()),
                     );
                   },
-                  child: Text('Nearby Places'))
-            ],
+                  child: Text(
+                    'Profile',
+                    style: TextStyle(
+                        color: Color(0xffFF6000),
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => const NearByPlacesScreen()),
+                      );
+                    },
+                    child: Text(
+                      'Nearby Places',
+                      style: TextStyle(
+                          color: Color(0xffFF6000),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    ))
+              ],
+            ),
           ),
         ),
         Padding(
