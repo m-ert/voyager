@@ -51,6 +51,11 @@ class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
                   getNearbyPlacesByKeyword('coffee');
                 },
                 child: const Text("Get Nearby Cafés")),
+            ElevatedButton(
+                onPressed: () {
+                  getNearbyPlacesByKeyword('shopping');
+                },
+                child: const Text("Get Nearby Shops")),
             if (nearbyPlacesResponse.results != null)
               for (int i = 0; i < nearbyPlacesResponse.results!.length; i++)
                 nearbyPlacesWidget(nearbyPlacesResponse.results![i])
