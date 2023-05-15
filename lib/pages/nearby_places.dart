@@ -14,10 +14,10 @@ class NearByPlacesScreen extends StatefulWidget {
 
 class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
   String apiKey = "AIzaSyDi9LTi74Ad-hxuJC8n92hHUBD2O9ItN4U";
-  String radius = "30";
+  String radius = "250";
 
-  double latitude = 31.5111093;
-  double longitude = 74.279664;
+  double latitude = 38.7377200;
+  double longitude = 35.473196;
 
   NearbyPlacesResponse nearbyPlacesResponse = NearbyPlacesResponse();
 
@@ -33,9 +33,24 @@ class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
           children: [
             ElevatedButton(
                 onPressed: () {
-                  getNearbyPlaces();
+                  getNearbyPlacesByType('school');
                 },
-                child: const Text("Get Nearby Places")),
+                child: const Text("Get Nearby Schools")),
+            ElevatedButton(
+                onPressed: () {
+                  getNearbyPlacesByKeyword('hukuk');
+                },
+                child: const Text("Get Nearby Law Offices")),
+            ElevatedButton(
+                onPressed: () {
+                  getNearbyPlacesByKeyword('restaurant');
+                },
+                child: const Text("Get Nearby Restaurants")),
+            ElevatedButton(
+                onPressed: () {
+                  getNearbyPlacesByKeyword('coffee');
+                },
+                child: const Text("Get Nearby Cafés")),
             if (nearbyPlacesResponse.results != null)
               for (int i = 0; i < nearbyPlacesResponse.results!.length; i++)
                 nearbyPlacesWidget(nearbyPlacesResponse.results![i])
@@ -45,16 +60,21 @@ class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
     );
   }
 
-  void getNearbyPlaces() async {
+  void getNearbyPlacesByKeyword(String input) async {
     var url = Uri.parse(
-        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' +
-            latitude.toString() +
-            ',' +
-            longitude.toString() +
-            '&radius=' +
-            radius +
-            '&key=' +
-            apiKey);
+        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=$input&location=$latitude,$longitude&radius=$radius&key=$apiKey');
+
+    var response = await http.post(url);
+
+    nearbyPlacesResponse =
+        NearbyPlacesResponse.fromJson(jsonDecode(response.body));
+
+    setState(() {});
+  }
+
+  void getNearbyPlacesByType(String input) async {
+    var url = Uri.parse(
+        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$latitude,$longitude&radius=$radius&type=$input&key=$apiKey');
 
     var response = await http.post(url);
 
