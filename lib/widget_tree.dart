@@ -1,4 +1,5 @@
 import 'package:voyager_v01/auth.dart';
+import 'package:voyager_v01/pages/dashboard.dart';
 import 'package:voyager_v01/pages/home_page.dart';
 import 'package:voyager_v01/pages/login_page.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class _WidgetTreeState extends State<WidgetTree> {
         stream: Auth().authStateChanges,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return HomePage();
+            return DashboardPage();
           } else {
             return const LoginPage();
           }

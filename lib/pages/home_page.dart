@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:voyager_v01/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:voyager_v01/main.dart';
+import 'package:voyager_v01/pages/dashboard.dart';
 import 'package:voyager_v01/pages/map_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -83,7 +84,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => VoyagerApp()),
+                  MaterialPageRoute(builder: (context) => DashboardPage()),
                 );
               },
               child: const Text(

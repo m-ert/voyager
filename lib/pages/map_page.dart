@@ -36,10 +36,13 @@ class MapSampleState extends State<MapSample> {
                 child: TextFormField(
                   controller: _searchController,
                   textCapitalization: TextCapitalization.words,
-                  decoration: const InputDecoration(hintText: 'Search'),
-                  onChanged: (value) {
-                    print(value);
-                  },
+                  decoration: const InputDecoration(
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                    hintText: 'Search',
+                    fillColor: Color(0xffF1F1F1),
+                    filled: true,
+                  ),
                 ),
               ),
               IconButton(
@@ -48,7 +51,10 @@ class MapSampleState extends State<MapSample> {
                       await LocationService().getPlace(_searchController.text);
                   _goToPlace(place);
                 },
-                icon: const Icon(Icons.search),
+                icon: const Icon(
+                  Icons.search,
+                  size: 34,
+                ),
               )
             ],
           ),
