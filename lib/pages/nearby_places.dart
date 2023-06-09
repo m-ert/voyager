@@ -179,15 +179,26 @@ class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
       decoration: BoxDecoration(
           border: Border.all(color: Colors.black),
           borderRadius: BorderRadius.circular(10)),
-      child: Column(
-        children: [
-          Text("Name: " + results.name!),
-          Text("Location: " +
-              results.geometry!.location!.lat.toString() +
-              " , " +
-              results.geometry!.location!.lng.toString()),
-          Text(results.openingHours != null ? "Open" : "Closed"),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              results.name!,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              'Rating: ${results.rating!}',
+              style: const TextStyle(fontSize: 16),
+            ),
+            Text('${results.vicinity}'),
+            Text(
+              results.openingHours != null ? "Open" : "Closed",
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
       ),
     );
   }
