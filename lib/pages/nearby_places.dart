@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:voyager_v01/nearby_reponse.dart';
@@ -14,7 +15,7 @@ class NearByPlacesScreen extends StatefulWidget {
 
 class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
   String apiKey = "AIzaSyDi9LTi74Ad-hxuJC8n92hHUBD2O9ItN4U";
-  String radius = "250";
+  double _radius = 250;
 
   double latitude = 38.7377200;
   double longitude = 35.473196;
@@ -139,6 +140,24 @@ class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
                   )),
             ],
           ),
+          const SizedBox(height: 20),
+          const Text(
+            'Adjust Radius',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          ),
+          Slider(
+              activeColor: Color(0xffFF6000),
+              inactiveColor: Colors.black45,
+              max: 300,
+              min: 80,
+              divisions: 4,
+              value: _radius,
+              label: _radius.round().toString(),
+              onChanged: (double value) {
+                setState(() {
+                  _radius = value;
+                });
+              }),
           if (nearbyPlacesResponse.results != null)
             for (int i = 0; i < nearbyPlacesResponse.results!.length; i++)
               nearbyPlacesWidget(nearbyPlacesResponse.results![i])
@@ -149,7 +168,7 @@ class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
 
   void getNearbyPlacesByKeyword(String input) async {
     var url = Uri.parse(
-        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=$input&location=$latitude,$longitude&radius=$radius&key=$apiKey');
+        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=$input&location=$latitude,$longitude&radius=$_radius&key=$apiKey');
 
     var response = await http.post(url);
 
@@ -161,7 +180,7 @@ class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
 
   void getNearbyPlacesByType(String input) async {
     var url = Uri.parse(
-        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$latitude,$longitude&radius=$radius&type=$input&key=$apiKey');
+        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$latitude,$longitude&radius=$_radius&type=$input&key=$apiKey');
 
     var response = await http.post(url);
 
