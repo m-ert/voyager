@@ -188,10 +188,6 @@ class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
               results.name!,
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            Text(
-              'Rating: ${results.rating!}',
-              style: const TextStyle(fontSize: 16),
-            ),
             Text('${results.vicinity}'),
             Text(
               results.openingHours != null ? "Open" : "Closed",
