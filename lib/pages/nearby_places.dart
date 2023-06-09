@@ -33,21 +33,29 @@ class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
         backgroundColor: Color(0xffFF6000),
       ),
       body: SingleChildScrollView(
-        child: Center(
           child: Column(
+        children: [
+          Row(
             children: [
               ElevatedButton(
                   onPressed: () {
                     getNearbyPlacesByType('school');
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xffFF6000),
+                      backgroundColor: const Color(0xffFF6000),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15))),
-                  child: const Text(
-                    "Get Nearby Schools",
-                    style: TextStyle(fontSize: 16),
+                  child: Row(
+                    children: const <Widget>[
+                      Icon(Icons.school),
+                      SizedBox(width: 8),
+                      Text(
+                        "Schools",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
                   )),
+              const SizedBox(width: 10),
               ElevatedButton(
                   onPressed: () {
                     getNearbyPlacesByKeyword('hukuk');
@@ -56,22 +64,39 @@ class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
                       backgroundColor: Color(0xffFF6000),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15))),
-                  child: const Text(
-                    "Get Nearby Law Offices",
-                    style: TextStyle(fontSize: 16),
+                  child: Row(
+                    children: const [
+                      Icon(Icons.balance),
+                      SizedBox(width: 8),
+                      Text(
+                        "Law Offices",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
                   )),
+            ],
+          ),
+          Row(
+            children: [
               ElevatedButton(
                   onPressed: () {
                     getNearbyPlacesByKeyword('restaurant');
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xffFF6000),
+                      backgroundColor: const Color(0xffFF6000),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15))),
-                  child: const Text(
-                    "Get Nearby Restaurants",
-                    style: TextStyle(fontSize: 16),
+                  child: Row(
+                    children: const [
+                      Icon(Icons.dining_sharp),
+                      SizedBox(width: 8),
+                      Text(
+                        "Restaurants",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
                   )),
+              const SizedBox(width: 10),
               ElevatedButton(
                   onPressed: () {
                     getNearbyPlacesByKeyword('coffee');
@@ -80,10 +105,20 @@ class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
                       backgroundColor: Color(0xffFF6000),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15))),
-                  child: const Text(
-                    "Get Nearby Cafés",
-                    style: TextStyle(fontSize: 16),
+                  child: Row(
+                    children: const [
+                      Icon(Icons.coffee),
+                      SizedBox(width: 8),
+                      Text(
+                        "Cafés",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
                   )),
+            ],
+          ),
+          Row(
+            children: [
               ElevatedButton(
                   onPressed: () {
                     getNearbyPlacesByKeyword('shopping');
@@ -92,17 +127,23 @@ class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
                       backgroundColor: Color(0xffFF6000),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15))),
-                  child: const Text(
-                    "Get Nearby Shops",
-                    style: TextStyle(fontSize: 16),
+                  child: Row(
+                    children: const [
+                      Icon(Icons.shopping_bag),
+                      SizedBox(width: 8),
+                      Text(
+                        "Shopping",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
                   )),
-              if (nearbyPlacesResponse.results != null)
-                for (int i = 0; i < nearbyPlacesResponse.results!.length; i++)
-                  nearbyPlacesWidget(nearbyPlacesResponse.results![i])
             ],
           ),
-        ),
-      ),
+          if (nearbyPlacesResponse.results != null)
+            for (int i = 0; i < nearbyPlacesResponse.results!.length; i++)
+              nearbyPlacesWidget(nearbyPlacesResponse.results![i])
+        ],
+      )),
     );
   }
 

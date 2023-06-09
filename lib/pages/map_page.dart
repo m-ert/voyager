@@ -27,6 +27,7 @@ class MapSampleState extends State<MapSample> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Browse'),
+        backgroundColor: const Color(0xffFF6000),
       ),
       body: Column(
         children: [
@@ -80,11 +81,4 @@ class MapSampleState extends State<MapSample> {
     controller.animateCamera(CameraUpdate.newCameraPosition(
         CameraPosition(target: LatLng(lat, lng), zoom: 15)));
   }
-
-  /*
-  Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
-  }
-  */
 }
